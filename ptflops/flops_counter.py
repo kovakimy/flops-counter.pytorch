@@ -24,8 +24,9 @@ def get_model_complexity_info(model, input_res,
     assert len(input_res) >= 1
     global CUSTOM_MODULES_MAPPING
     CUSTOM_MODULES_MAPPING = custom_modules_hooks
-    flops_model.start_flops_count(ost=ost, verbose=verbose, ignore_list=ignore_modules)
+    
     flops_model = add_flops_counting_methods(model)
+    flops_model.start_flops_count(ost=ost, verbose=verbose, ignore_list=ignore_modules)
     flops_model.eval()
     
     if input_constructor:
